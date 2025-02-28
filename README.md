@@ -4,15 +4,22 @@ des Semesters erweitert. Daher bitte ich euch, vor jeder Vorlesung und Übung de
 zu aktualisieren.
 
 ## Struktur und Ablauf
-Auf der Ordnerebene src/main findet ihr verschiedene Packages. Diese stellen die Hauptthemen des Vorlesungsstoffes dar.
-Eine Ebene tiefer gibt es (je nach Thema) verschiedene Unterkapitel. Diese werden wiederum geteilt in die Paket-Struktur:
+Auf der Ordnerebene src/main findet ihr verschiedene Pakete. Diese stellen die Hauptthemen des Vorlesungsstoffes dar.
+Eine Ebene tiefer gibt es (je nach Thema) verschiedene Unterkapitel. Diese werden geteilt in die Paket-Struktur:
 
 - lecture
 - tasks
 
-Die hier genannte zweiteilige Struktur findet sich in allen Unterkapitel-Paketen wieder. Während einer Vorlseung werde ich
-mich grob am Inhalt des lecture-Pakets orientieren. Der dortige Inhalt ist meist unvollständig und für euch weniger relevant.
+Während einer Vorlseung orientiere ich mich grob am Inhalt des lecture-Pakets. Dort können auch durchaus für die Übungen
+hilfreiche Beispiele auffindbar sein. Die Übung selbst für ein Thema findet ihr in der Datei package-info.java im Paket
+tasks. Dort stelle ich euch auch teilweise Code zur Verfügung, den ihr direkt für die Aufgaben nutzen könnt.
 
-Der relevante Teil liegt im tasks-Paket. Dort findet ihr eine package-info.java vor, die die Aufgaben zum aktuellen Thema enthält.
-Der Umfang dieser Aufgaben ist nicht wirklich an einer Seminarslänge orientiert. Ich werde so viele Aufgaben in dezentem Tempo 
-parallel live lösen, wie in der Vorlesung entsprechende Themen behandelt wurden.
+## Seminare
+Die eben erwähnten Aufgaben können in den Seminaren gelöst werden und durchaus auch als 'Hausaufgabe' weitergeführt werden.
+Für einen kleinen Anreiz gilt das folgende:
+
+Wer die Aufgabe erfolgreich gelöst hat, kann seinen Code in ein Package mit seinem Namen oder irgendeinem Spitznamen packen,
+das sich auf derselben Ebene wie die Packages lecture und tasks befindet. Anschließend kann ein Pull-Request gestellt werden.
+Die ersten drei Pull-Requets werde ich dann übernehmen (sofern der Code funktionstüchtig ist xD).
+
+Bitte denkt daran, dass dies ein öffentliches Repo ist. Schreibt daher keine persönlichen Daten in euren Code.
