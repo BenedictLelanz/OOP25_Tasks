@@ -1,5 +1,6 @@
 package main.abstraction.interfaces.lecture;
 
+import java.util.Arrays;
 import java.util.function.IntPredicate;
 
 public class IntFilter {

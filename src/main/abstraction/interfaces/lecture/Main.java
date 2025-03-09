@@ -12,8 +12,6 @@ public class Main {
 
         int i = FullInterface.VALUE;
 
-        
-
         Person hans = new Person("Hans", 60);
         
     }
