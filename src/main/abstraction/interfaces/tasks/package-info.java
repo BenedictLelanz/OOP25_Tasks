@@ -10,7 +10,7 @@
  * 
  * Für die Analyse könnte ihr die Instanz eurer Bank verwenden und das Interface DoublePredicat verwenden (ähnlich zum in der
  * Vorlesung behandelten IntPredicate). Beispiele wären z.B. die Anzahl der Bankkonten zu ermitteln, deren Geldstand > 500.0 ist.
- * Das wäre ein Predikat. Ein anderes könnte sein, zu ermitteln, ob der Geldstand < 100 ist.
+ * Das wäre ein Prädikat. Ein anderes könnte sein, zu ermitteln, ob der Geldstand < 100 ist.
  * 
  * Ich gebe euch dafür hier noch einen groben Plan vor, wie ihr vorgehen könntet.
  * 
@@ -38,7 +38,7 @@
  * 
  * 5. Analysiert die Geldbeträge der Konten.
  *    - Erstellt eine Klasse 'Analytics' mit einer Methode, die ein Objekt vom Typ DoublePredicate entgegennimmt.
- *    - Die Methode soll nun die Anzahl aller Konten ermitteln, die das Predikat erfüllen.
+ *    - Die Methode soll nun die Anzahl aller Konten ermitteln, die das Prädikat erfüllen.
  *    - Lasst euch eine kleine Übersicht über die Anzahl verschiedener Kontostände (z.B. 1000 bis 2000) ausgeben
  *  
  */
