@@ -7,13 +7,7 @@ public interface FullInterface {
     int OTHER_VALUE = 3;
 
     public default void foo() {
-
+        // Do code a
     }
-
-    private static void foo1() {
-
-    }
-
-    public abstract void foo2();
     
 }
