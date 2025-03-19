@@ -25,8 +25,10 @@ public class DrawableRenderer extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (GeometrischesObjekt o : this.drawables)
+        for (GeometrischesObjekt o : this.drawables) {
+            g.setColor(Color.BLACK);
             o.draw(g);
+        }
     }
 
 }
