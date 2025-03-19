@@ -32,11 +32,11 @@
  * - Implementiert in Mehreck eine Funktion calcArea, die die Fläche des Mehrecks berechnet. Diese soll allgemeingültig für Polygone
  *   mit n Ecken sein.
  * - Z.B. mit dieser Formel: https://de.wikipedia.org/wiki/Gaußsche_Trapezformel
- * - Hinweis: for (int i = 0; i < n-1; i++) sum += (p[i].y + p[i+1].y) * (p[i].x - p[i+1].x) / 2
+ * - Hinweis: for (int i = 0; i < n; i++) sum += (p[i].y + p[i+1%n].y) * (p[i].x - p[i+1%n].x) / 2; result = |sum|
  * 
  * Aufgabe 6:
- * - Erzeugt einige geometrische Objekte, fügt sie der zu zeichnenden Liste hinzu und lasst euch dann die Fläche ausgeben, die alle
- *   geometrischen Objekte zusammen ausfüllen
+ * - Erzeugt einige geometrische Objekte, fügt sie der zu zeichnenden Liste hinzu und lasst euch dann für jedes erzeugte Objekt die
+ *   zugehörige Fläche ausgeben.
  * 
  * Aufgabe 7 (Bonus):
  * - Erstellt eine Klasse für ein 5-Eck.
