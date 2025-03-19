@@ -12,5 +12,10 @@ public class Punkt extends GeometrischesObjekt {
         this.x = x;
         this.y = y;
     }
+
+    @Override
+    public String toString() {
+        return "Punkt[" + this.x + ", " + this.y + "]";
+    }
     
 }
