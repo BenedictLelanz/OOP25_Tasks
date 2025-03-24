@@ -8,12 +8,18 @@ public class Main {
     public static void main(String[] args) {
         List<DataAssignment> assignments = new ArrayList<>();
 
-        // TODO add all enum values
+        for (StudiengangImpl h : StudiengangImpl.values())
+            assignments.add(h);
 
         // Reads all the data from the console
         new DataReader(assignments);
 
-        // TODO print assigned data for all enum values
+        for (StudiengangImpl h : StudiengangImpl.values())
+            System.out.println(h);
     }
     
+    static double getAuslastung(StudiengangImpl h) {
+        return (double) h.getStudierende() / h.getStudienplaetzte();
+    }
+
 }

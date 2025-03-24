@@ -2,6 +2,9 @@ package main.abstraction.enums.lecture;
 
 public class EnumDemo {
 
+    static final EnumDemo CONST1 = new EnumDemo();
+    static final EnumDemo CONST1 = new EnumDemo();
+
     interface I {
         String method1();
     }
