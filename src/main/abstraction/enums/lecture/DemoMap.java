@@ -9,6 +9,8 @@ public class DemoMap {
 
     void store(String key, String obj) {
         this.map.put(key, obj);
+
+        this.map.get(key);
     }
     
 }
