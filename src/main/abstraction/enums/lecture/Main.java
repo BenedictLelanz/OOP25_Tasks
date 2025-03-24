@@ -6,7 +6,9 @@ public class Main {
 
     public static void main(String[] args) {
         
-        E e = E.E1;
+        E e = E.E5;
+
+        E.valueOf("E1")
 
         switch (e) {
             case E1: 

@@ -22,21 +22,17 @@ public class Main {
         new Pinguin(3);
         //children.childrenMethod1();
         children.parentMethod1();
-        //children.parentMethod2();
+        children.parentMethod2();
         
         // Geht das?
-       // Children children = new Parent();
+        //Children children = new Parent();
         
         // Geht das?
-        doSthWithParent(children);
+        //doSthWithParent(children);
 
         Vogle p = children;
         // Geht das?
-        Pinguin cc = (Pinguin) p;
-
-        //Parent parent = new Parent();
-        
-        //Children c = (Children) parent;
+        //Children cc = p;
 
         // ... expliziter Cast
 
