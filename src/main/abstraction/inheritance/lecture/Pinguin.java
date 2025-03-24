@@ -1,17 +1,21 @@
 package main.abstraction.inheritance.lecture;
 
-public class Children extends Parent {
+import java.util.List;
+
+public class Pinguin extends Vogle {
+
+    List b;
 
     static String name;
 
     int i;
 
-    Children() {
-        super("hallo");
+    Pinguin() {
+        super("hello");
         System.out.println("hallo");
     }
 
-    Children(int i) {
+    Pinguin(int i) {
         this();
     }
 
@@ -35,8 +39,8 @@ public class Children extends Parent {
 
     @Override
     public boolean equals(Object o) {
-        boolean isI = o instanceof Children c;
-        Children c1 = (Children) o;
+        boolean isI = o instanceof Pinguin c;
+        Pinguin c1 = (Pinguin) o;
         if (isI) return this.i == c1.i;
         return false;
     }

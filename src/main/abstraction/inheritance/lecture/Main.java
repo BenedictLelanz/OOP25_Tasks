@@ -4,8 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-    
-        Children children = new Children();
+        new AbstractExample();
+
+        Pinguin children = new Pinguin();
 
         //children.parentMethod2();
 
@@ -13,12 +14,12 @@ public class Main {
 
         //System.out.println(children);
 
-        Children children2 = children;
+        Pinguin children2 = children;
 
         System.out.println(children == children2);
         System.out.println(children.equals(children2));
 
-        new Children(3);
+        new Pinguin(3);
         //children.childrenMethod1();
         children.parentMethod1();
         //children.parentMethod2();
@@ -29,9 +30,9 @@ public class Main {
         // Geht das?
         doSthWithParent(children);
 
-        Parent p = children;
+        Vogle p = children;
         // Geht das?
-        Children cc = (Children) p;
+        Pinguin cc = (Pinguin) p;
 
         //Parent parent = new Parent();
         
@@ -39,10 +40,17 @@ public class Main {
 
         // ... expliziter Cast
 
+        int a = 3;
+        doSth(a);
+
     }
 
-    private static void doSthWithParent(Parent parent) {
+    private static void doSthWithParent(Vogle parent) {
         parent.parentMethod1();
+    }
+
+    private static void doSth(Integer a) {
+        
     }
     
 }
