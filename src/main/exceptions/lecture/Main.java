@@ -6,8 +6,6 @@ public class Main {
         // Unchecked exception
         o.toString();
         
-        IllegalArgumentException e = new IllegalArgumentException();
-        //throw new IllegalArgumentException(e);
     }
     
 }
