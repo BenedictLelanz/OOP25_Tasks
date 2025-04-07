@@ -5,7 +5,7 @@
  * einem Matrikel über die DataRader Klasse dynamisch zugewiesen werden. Das soll nun professionalisiert werden.
  * 
  * Absofort soll jedem Matrikel eine Textdatei gehören, in der Auskunft über die zugehörigen Personen (Studenten) gegeben wird. Eine 
- * Person ist eine serialisierte (abgespeicherte) Instanz der Klasse Person (main.abstraction.interfaces.lecture.Person). D.h. in den
+ * Person ist eine serialisierte (abgespeicherte) Instanz der Klasse Person (main.abstraction.interfaces.lecture.Person). D.h. in
  * den Textdateien je Matrikel stehen die Dateipfade zu den jeweiligen Person-Dateien.
  * 
  * =============================================================== A-Teil ===============================================================
@@ -15,8 +15,8 @@
  *
  * 2. Schreibt eine Klasse mit main-Methode (z. B. `PersonCreator`), mit der mehrere Personen erstellt und als `.person`-Dateien 
  *    gespeichert werden.
- *    - Die Dateien sollen unter dem Pfad 'red/persons/' abgelegt werden.
- *    - Jede Datei soll idealerweise den Namen `<vorname>_<nachname>_<matrikelnummer>.person` erhalten.
+ *    - Die Dateien sollen unter dem Pfad 'res/persons/' abgelegt werden.
+ *    - Jede Datei soll idealerweise den Namen `<vorname>_<nachname>.person` erhalten.
  *    - Nutzt dafür `ObjectOutputStream`, um die erstellten Instanzen von Person zu serialisieren. (Siehe ...lecture.io.SaveObject)
  *
  * =============================================================== B-Teil ===============================================================

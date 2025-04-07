@@ -13,8 +13,8 @@ public class SaveObject {
     
     public static void main(String[] args) throws Exception {
         // Write file
-        ObjectOutputStream s = new ObjectOutputStream(new FileOutputStream("res/audi.car"));
-        s.writeObject(new Car("audi_80"));
+        //ObjectOutputStream s = new ObjectOutputStream(new FileOutputStream("res/audi.car"));
+        //s.writeObject(new Car("audi_80"));
 
         // Read file
         ObjectInputStream inS = new ObjectInputStream(new FileInputStream("res/audi.car"));
