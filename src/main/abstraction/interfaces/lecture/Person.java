@@ -1,10 +1,12 @@
 package main.abstraction.interfaces.lecture;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable {
     String name;
     int age;
 
-    Person(String name, int alter) {
+    public Person(String name, int alter) {
         this.name = name;
         this.age = alter;
     }
@@ -21,7 +23,12 @@ public class Person {
         name = n;
     }
 
-    String getName() {
+    public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Person[name: " + getName() + ", age: " + getAge() + "]";
     }
 }

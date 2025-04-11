@@ -1,5 +1,5 @@
 /**
- * Erweitertes Studenten-Veraltungssystem
+ * Erweitertes Studenten-Verwaltungssystem
  * 
  * In der Übungsaufgabe zu Enums habt ihr ein Enum für verschiedene Matrikel angelegt. Verschiedene Eigenschaften konnten
  * einem Matrikel über die DataRader Klasse dynamisch zugewiesen werden. Das soll nun professionalisiert werden.

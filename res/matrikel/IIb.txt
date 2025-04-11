@@ -1,0 +1,3 @@
+res/persons/Georg.person
+res/persons/Karl.person
+res/persons/Peter.person
