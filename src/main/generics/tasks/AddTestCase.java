@@ -12,8 +12,10 @@ public class AddTestCase<S, T extends Collection<S>> {
      * @return the time needed for all add operations
      */
     public long runTest(Set<S> valuesToAdd, T c) {
-        // TODO
-        return 0;
+        long startTime = System.currentTimeMillis();
+        for (S value : valuesToAdd)
+            c.add(value);
+        return System.currentTimeMillis() - startTime;
     }
 
 }

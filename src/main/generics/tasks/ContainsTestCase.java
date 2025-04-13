@@ -13,8 +13,10 @@ public class ContainsTestCase<S, T extends Collection<S>> {
      * @return the time needed for all contains checks
      */
     public long runTest(Set<S> valuesToCheck, T c) {
-        // TODO
-        return 0;
+        long startTime = System.currentTimeMillis();
+        for (S value : valuesToCheck)
+            c.contains(value);
+        return System.currentTimeMillis() - startTime;
     }
 
 }
