@@ -20,6 +20,9 @@ public class Wildcards {
         map.put("aaa", "b");
         map.put(new Object(), new Object());
 
+        // Einzige Ausnahme: null, das passt zu allen Typen
+        map.put(null, null);
+
         // Das geht -> Integer und Double sind mit ? verträglich (? : irgendein Typ)
         map = new HashMap<Integer, Double>(); 
         // Die Gestalt von Integer, Double wird angenommen -> obige Befehle wären also nicht gegangen!
@@ -43,6 +46,14 @@ public class Wildcards {
         // nicht alle geforderten Methoden/Attribute
 
         // Hier ist also Lesen und Schreiben möglich
+    }
+
+    <T> void contravarianzGen(List<? super T> list, T element) {
+        // Auch sowas geht, T element ist hier wie der Integer aus contraviarianz()
+        list.add(element);
+
+        // Aufruf-Beispiel
+        contravarianzGen(new ArrayList<Number>(), 3);
     }
     
 }
