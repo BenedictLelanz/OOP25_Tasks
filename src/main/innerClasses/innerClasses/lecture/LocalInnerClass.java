@@ -10,7 +10,10 @@ public class LocalInnerClass {
 
     int inc5(int i) {
 
-        int k = 1;
+        final int k = 1;
+        
+
+        //k++;
 
         class Tranform implements Function<Integer, Integer> {
 
@@ -21,7 +24,7 @@ public class LocalInnerClass {
 
             void manipulate() {
                 // Achtung! Sowas geht nicht.
-                i++;
+                System.out.println(i);
                 // Eine Methodenvariable existiert nur während einer Methode
                 // Die Instanz existiert möglicherweise länger
 
@@ -34,7 +37,8 @@ public class LocalInnerClass {
             }
         }
 
-        return new Tranform().apply(i);
+        Tranform t = new Tranform();
+        return t.apply(i);
     }
     
 }
