@@ -14,9 +14,14 @@ public class Anonym {
 
         // Wir erstellen keine Klasse "StringComparator" -> direkt anonym
         a.sort(values, new Comparator<String>() {
+
+            void helper() {
+
+            }
             
             @Override
             public int compare(String o1, String o2) {
+                helper();
                 return o1.compareTo(o2);
             }
             

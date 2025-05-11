@@ -21,9 +21,11 @@ public class OuterClass {
 
     class InnerClass {
 
+        int var = 7;
+
         void innerMethod() {
             // Zugriff auf Elemente der äußeren Klasse
-            var = 6;
+            OuterClass.this.var = 6;
 
             // Wie geife ich auf var zu, wenn es auch int var in der inneren Klasse gibt?!
         }
@@ -41,9 +43,15 @@ public class OuterClass {
         // Wir können aber die statische Methode aufrufen
         OuterClass.InnerClass.staticMethod();
 
+
+
     }
 
-    private class MyPrivateClass {
+    protected class MyPrivateClass {
+
+        public void foo() {
+            // Auch hier kein Zugriff auf foo, trotz public
+        }
 
     }
 
