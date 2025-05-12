@@ -6,6 +6,10 @@ import java.util.stream.*;
 
 public class Lambda {
 
+    static int get() {
+        return 3;
+    }
+
     public static void main(String[] args) {
         // 1. Runnable as lambda
         Runnable greeting = () -> System.out.println("Hello World!");
@@ -40,5 +44,9 @@ public class Lambda {
                 .map(n -> n * n)
                 .collect(Collectors.toList());
         System.out.println("Squared numbers: " + squared);
+
+        List<Integer> numbers1 = Arrays.asList(1, 2, 3, 4);
+
+        numbers1.forEach(System.out::println);
     }
 }
