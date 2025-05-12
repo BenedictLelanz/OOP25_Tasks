@@ -1,34 +1,38 @@
 /**
- * Lambdas & Methoden-Referenzen
+ * Reduce, Map und Filter
  *
- * In der heutigen Übung soll der generische Algorithmus 'reduce' implementiert werden.
- * reduce nimmt eine Liste von Elementen vom Typ T und reduziert diese auf ein einziges
- * Element vom Typ T, das zurückgegeben wird.
+ * In der heutigen Übung sollen die generischen Algorithmen 'reduce', 'map' und 'filter'
+ * aus der Klasse Util implementiert werden und anschließend mithilfe von Lambdas und 
+ * Methoden-Referenzen getestet werden.
  * 
- * Aufgabe 2, 3 und 4 sind Beispiel-Aufrufe von reduce, mit Lambdas und
- * Methoden-Referenzen.
+ * Funktionweisen:
+ * - reduce: reduce ist ein Algorithmus, der eine Liste von Werten schrittweise auf einen
+ *           einzigen Wert zusammenfasst, indem er eine Funktion auf jeweils zwei Elemente
+ *           anwendet – ein Zwischenergebnis und das nächste Listenelement
  * 
- * 1. Schreibt eine Methode reduce, die eine Liste von Elementen und eine Verknüpfung übernimmt.
- *    Sie reduziert die Liste mit der Verknüpfung und gibt das Ergebnis zurück:
+ * - map:    map wendet eine Funktion auf jedes Element einer Liste an und gibt eine neue
+ *           Liste mit den Ergebnissen zurück.
  * 
- *      public static <T> T reduce(List<T> liste, Verknuepfung<T> verknuepfung);
+ * - filter: filter prüft jedes Element einer Liste mit einer Bedingung (Funktion) und gibt
+ *           nur die Elemente zurück, die diese Bedingung erfüllen.
  * 
- *    Hinweis: Die Implementierung könnte aus einer Schleife und einem aktuell resultierenden
- *    Element vom Typ T bestehen, das nachher zurückgegeben wird.
  * 
- * 2. Verwendet einen Lambda-Ausdruck, um die Zahlen einer Liste mittels 'reduce' zu addieren.
- *    
- *    List<Integer> zahlen = Arrays.asList(1, 2, 3, 4, 5);
+ * Implementiert die folgenden Anwendungsfälle:
  * 
- * 3. Verwendet einen Lambda-Ausdruck, um das Maximum aus einer Liste von Zahlen mittels 'reduce' zu finden.
+ * Reduce (mit Lambdas):
+ * - Die Summe aller Umsätze in einer Liste berechnen.
+ * - Die längste Zeichenkette aus einer Liste von Strings finden.
  * 
- *    List<Integer> zahlen = Arrays.asList(1, 2, 3, 4, 5);
+ * Map (mit Methoden-Referenzen):
+ * - Eine Liste von Zahlen als Strings ("12", "512", ...) in eine List<Integer> umwandeln
+ *      - Hinweis: Integer.parseInt("234") hilft dabei
+ * - Eine Liste von Strings in eine Liste von Strings mit Großbuchstaben umwandeln
  * 
- * 4. Verwendet eine Methoden-Referenz, um Strings in einer Liste mittels 'reduce' zu verketten.
+ * Filter (mit Lambdas)
+ * - Aus einer Liste von main.abstraction.interfaces.lecture.Person nur die Personen
+ *   zurückgeben, die volljährig sind
+ * - Aus einer Liste von Supplier<Integer> nur die zurückgeben, deren gelieferter Wert > 0 ist
  * 
- *    List<String> texte = Arrays.asList("Hallo", "Welt", "Java");
- * 
- *    Strings werden normalerweise auf den folgenden Weg konkateniert: String c = "hello ".concat("world")
- * 
+ * Viel Erfolg!
  */
 package main.innerClasses.lambdas.tasks;

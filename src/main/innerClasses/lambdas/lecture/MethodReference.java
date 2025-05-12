@@ -20,7 +20,13 @@ public class MethodReference {
         exec(String::toCharArray);
 
         // 4. Constructor reference
+        
         Supplier<List<String>> listFactory = ArrayList::new;
+        Supplier<List<String>> listFactory1 = () -> new ArrayList<String>();
+
+        Function<String, X> xConstrLam = (s) -> new X(s);
+        Function<String, X> xConstr = X::new;
+
         List<String> newList = listFactory.get();
         newList.add("one");
         newList.add("two");
@@ -31,5 +37,20 @@ public class MethodReference {
 
     static void exec(Consumer<String> c) {
         c.accept("hallo");
+
+        bi(String::concat, "adsdfs");
+        "hello ".concat("world");
     }
+
+    static String bi(BiFunction<String, String, String> bi, String a) {
+        return bi.apply("hello ", a);
+    }
+}
+
+class X {
+
+    X(String a) {
+
+    }
+
 }
