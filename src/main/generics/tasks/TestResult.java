@@ -11,9 +11,9 @@ public class TestResult<S, T extends Collection<S>> implements Comparable<TestRe
 
     private final T collection;
 
-    private final long timeAdd;
+    final long timeAdd;
 
-    private final long timeContains;
+    final long timeContains;
 
     TestResult(Set<S> testSet, T collection, long timeAdd, long timeContains) {
         this.testSet = testSet;

@@ -12,19 +12,25 @@ import java.util.TreeSet;
 public class TestCases {
 
     public static void main(String[] args) {
+        long startTime = System.currentTimeMillis();
+
         TestCases tc = new TestCases();
 
         TestDataGenerator<Integer> tgb = new IntGenerator(0, 10_000);
         System.out.println("Start generating ints");
         Set<Integer> ints = tgb.generate(10_000_000);
         System.out.println("Generating ints done");
-        tc.printTestResults("intTest10_000", tc.testForAll(ints));
+        List<TestResult<?, ?>> resultsInt = tc.testForAll(ints);
+        tc.printTestResults("intTest10_000", resultsInt);
 
         TestDataGenerator<String> tgb1 = new StringGenerator();
         System.out.println("Start generating strings");
         Set<String> strings = tgb1.generate(10_000);
         System.out.println("Generating strings done");
-        tc.printTestResults("stringTest10_000", tc.testForAll(strings));
+        List<TestResult<?, ?>> resultsString = tc.testForAll(strings);
+        tc.printTestResults("stringTest10_000", resultsString);
+
+        System.out.println("All tests done in " + (System.currentTimeMillis() - startTime) + "ms");
     }
 
     private void printTestResults(String name, List<TestResult<?, ?>> results) {
