@@ -19,14 +19,7 @@ public class Async {
     }
 
     void runAsync() {
-        Thread mult2Runner = new Thread() {
-
-            @Override
-            public void run() {
-                mult2();
-            }
-
-        };
+        Thread mult2Runner = new Thread(() -> mult2());
         Thread add1Runner = new Thread() {
 
             @Override
@@ -37,6 +30,14 @@ public class Async {
         };
         mult2Runner.start();
         add1Runner.start();
+
+        try {
+            mult2Runner.join();
+            add1Runner.join();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         
         // Erwartungen???
         System.out.println(i);
@@ -44,7 +45,7 @@ public class Async {
 
     public static void main(String[] args) {
         Async e = new Async();
-        e.runSeq();
+        e.runAsync();
     }
     
 }

@@ -25,18 +25,24 @@ public class ReadWrite {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        ReadWrite rw = new ReadWrite();
+        int counter = 0;
+        while (true) {
+            counter ++;
 
-        Thread t1 = new Thread(rw::inc);
-        Thread t2 = new Thread(rw::dec);
+            ReadWrite rw = new ReadWrite();
+            Thread t1 = new Thread(() -> rw.c = rw.c + 1);
+            Thread t2 = new Thread(() -> rw.c = rw.c - 1);
 
-        t1.start();
-        t2.start();
+            t1.start();
+            t2.start();
 
-        t1.join();
-        t2.join();
-
-        System.out.println(rw.c);
+            t1.join();
+            t2.join();
+            
+            if (rw.c != 0)
+            break;
+        }
+        System.out.println("!= 0 after " + counter + " steps");
     }
 
 }
