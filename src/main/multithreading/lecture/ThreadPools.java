@@ -8,9 +8,10 @@ public class ThreadPools {
 
     public static void main(String[] args) {
         
-        ScheduledExecutorService ses = new ScheduledThreadPoolExecutor(1);
+        ScheduledExecutorService ses = new ScheduledThreadPoolExecutor(5);
 
-        ses.schedule(() -> System.out.println("hello world"), 1_000, TimeUnit.SECONDS);
+        ses.execute(() -> System.out.println("fehwiof"));
+        ses.schedule(() -> System.out.println("hello world"), 1_000, TimeUnit.MILLISECONDS);
 
         ses.scheduleAtFixedRate(() -> System.out.println("scheduled at fixed rate"), 500, 500, TimeUnit.MILLISECONDS);
 

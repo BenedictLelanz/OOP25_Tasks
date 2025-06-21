@@ -23,6 +23,8 @@ public class LocalInnerClass {
             }
 
             void manipulate() {
+
+                class Crazy {}
                 // Achtung! Sowas geht nicht.
                 System.out.println(i);
                 // Eine Methodenvariable existiert nur während einer Methode

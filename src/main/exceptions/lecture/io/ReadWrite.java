@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class ReadWrite {
@@ -28,7 +30,15 @@ public class ReadWrite {
         BufferedReader readerFile = new BufferedReader(new FileReader("res/test.txt"));
         String readLineFile1 = readerFile.readLine();
         String readLineFile2 = readerFile.readLine();
-        System.out.println(readLineFile1 + " " + readLineFile2);
+        System.out.println(readLineFile1);
+        System.out.println(readLineFile2);
+
+        String[] valuesSpe = readLineFile1.split(": ");
+        System.out.println(valuesSpe[0]);
+        System.out.println(Integer.parseInt(valuesSpe[1]));
+
+        Map<String, Integer> props = new HashMap<>();
+        props.put(valuesSpe[0], Integer.parseInt(valuesSpe[1]));
         readerFile.close();
     }
 

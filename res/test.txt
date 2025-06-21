@@ -1,2 +1,2 @@
-hallo
-welt
+propName1: 12
+propName2: 15
