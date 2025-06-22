@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 public class Enviroment {
 
-    private static enum DefaultValue {
+    public static enum EnvProp {
         WACHSTUMSRATE, BLÄTTER;
     }
 
@@ -14,13 +14,11 @@ public class Enviroment {
 
     public static final int SAVE_INTERVAL = 2_000;
 
-    public static final int DAY_DURATION = 1_000;
+    public static final int DAY_DURATION = 500;
 
-    private static final String FILE_NAME = "states.env";
+    public static final String FILE_NAME = "res/env_states.env";
 
-    private final MapConverter<String, Double> mapConverter;
-
-    private final Map<String, Double> values;
+    private final Map<EnvProp, Double> values;
 
     private final Thread printerThread;
 
@@ -37,86 +35,47 @@ public class Enviroment {
     }
 
     Enviroment(String fileName) {
-        this(new MapConverter<String, Double>().readMap(fileName));
+        this(new MapConverter<EnvProp, Double>().readMap(fileName,
+                k -> EnvProp.valueOf(k), v -> Double.parseDouble(v)));
     }
 
-    Enviroment(Map<String, Double> states) {
-        this.mapConverter = new MapConverter<>();
+    Enviroment(Map<EnvProp, Double> states) {
         this.values = states;
-        checkDefaultValues();
 
-        this.printerThread = new Thread(() -> runPrinter());
-        this.saverThread = new Thread(() -> runSaver());
-        this.simThread = new Thread(() -> runDays());
-        this.printerThread.start();
-        this.saverThread.start();
-        this.simThread.start();
-    }
+        // Default values
+        this.values.putIfAbsent(EnvProp.WACHSTUMSRATE, 10.);
+        this.values.putIfAbsent(EnvProp.BLÄTTER, 1_000_000.);
 
-    private void nextDay(int currentDay) {
-        String bl = DefaultValue.BLÄTTER.name();
-        String wa = DefaultValue.WACHSTUMSRATE.name();
-        // Blätter vermehren sich täglich um 10%
-        set(bl, ((1 + get(wa) / 100) * get(bl)));
-        // TODO other changes?!
-    }
+        // Schedulers
+        this.printerThread = new EnvScheduler(() -> {
+            System.out.println("States at day " + this.day);
+            for (Entry<EnvProp, Double> e : this.values.entrySet())
+                System.out.println(e.getKey() + " -> " + e.getValue());
+            System.out.println();
+        }, PRINT_INTERVAL);
 
-    private void checkDefaultValues() {
-        if (this.values.get(DefaultValue.WACHSTUMSRATE.name()) == null)
-            this.values.put(DefaultValue.WACHSTUMSRATE.name(), 10.0);
-        if (this.values.get(DefaultValue.BLÄTTER.name()) == null)
-            this.values.put(DefaultValue.BLÄTTER.name(), 1_000_000.0);
-    }
+        final MapConverter<EnvProp, Double> mapSaver = new MapConverter<>();
+        this.saverThread = new EnvScheduler(() -> {
+            mapSaver.saveMap(this.values, FILE_NAME);
+        }, SAVE_INTERVAL);
 
-    private void runDays() {
-        while (!Thread.interrupted()) {
-            nextDay(this.day);
+        this.simThread = new EnvScheduler(() -> {
+            // Increase leaf count by EnvProp.WACHSTUMSRATE
+            set(EnvProp.BLÄTTER, ((1 + get(EnvProp.WACHSTUMSRATE) / 100) * get(EnvProp.BLÄTTER)));
+            // Other env changes ...
             this.day++;
-            try {
-                Thread.sleep(DAY_DURATION);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
+        }, DAY_DURATION);
     }
 
-    private void runSaver() {
-        while (!Thread.interrupted()) {
-            this.mapConverter.saveMap(this.values, FILE_NAME);
-            try {
-                Thread.sleep(SAVE_INTERVAL);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
-    }
-
-    private void runPrinter() {
-        while (!Thread.interrupted()) {
-            synchronized (this) {
-                System.out.println("States at day " + this.day);
-                for (Entry<String, Double> e : this.values.entrySet())
-                    System.out.println(e.getKey() + " -> " + e.getValue());
-                System.out.println();
-            }
-            try {
-                Thread.sleep(PRINT_INTERVAL);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
-    }
-
-    public synchronized void set(String property, double value) {
+    public synchronized void set(EnvProp property, double value) {
         this.values.put(property, value);
     }
 
-    public synchronized double get(String property) {
-        if (values.get(property) == null) return 0;
-        return values.get(property);
+    public synchronized double get(EnvProp property) {
+        return values.getOrDefault(property, 0.);
     }
 
-    public int getDay() {
+    public int getCurrentDay() {
         return this.day;
     }
 
@@ -130,5 +89,33 @@ public class Enviroment {
     public boolean isStopped() {
         return this.stopped;
     }
-    
+
+    class EnvScheduler extends Thread {
+
+        private final Runnable task;
+
+        private final int sleep;
+
+        EnvScheduler(Runnable task, int sleep) {
+            this.task = task;
+            this.sleep = sleep;
+            this.start();
+        }
+
+        @Override
+        public void run() {
+            while (!Thread.interrupted()) {
+                synchronized (Enviroment.this) {
+                    this.task.run();
+                }
+                try {
+                    Thread.sleep(this.sleep);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
+
+    }
+
 }

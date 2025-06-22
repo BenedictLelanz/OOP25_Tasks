@@ -6,36 +6,72 @@ public abstract class Animal extends Thread {
 
     private final Enviroment env;
 
-    private final String name;
+    private final int initAge;
 
-    private final int lifetime;
+    private final int maxAge;
 
-    private boolean died = false;
+    private final int birthday;
 
-    Animal(Enviroment env, String name, int lifetime) {
+    private double age;
+
+    private int generation;
+
+    private boolean masculine;
+
+    Animal(Enviroment env, int age, int maxAge, int generation, boolean masculine) {
         this.env = env;
-        this.name = name;
-        this.lifetime = lifetime;
-        start();
+        this.initAge = age;
+        this.maxAge = maxAge;
+        this.birthday = env.getCurrentDay();
+        this.age = age;
+        this.generation = generation;
+        this.masculine = masculine;
     }
 
     @Override
     public void run() {
+        born();
         long startTime = System.currentTimeMillis();
-        while (!this.env.isStopped() && (System.currentTimeMillis() - startTime < this.lifetime) && !died)
+        while (!this.env.isStopped() && this.age < this.maxAge && !Thread.interrupted()) {
+            this.age = this.initAge + (System.currentTimeMillis() - startTime) / Enviroment.DAY_DURATION;
             live();
-        System.out.println("Animal " + this.name + " died.");
-        this.died = true;
+            try {
+                Thread.sleep(RUN_INTERVAL);
+            } catch (InterruptedException e) {
+                interrupt();
+            }
+        }
+        died();
     }
 
-    public boolean isDied() {
-        return this.died;
+    protected Enviroment getEnviroment() {
+        return this.env;
     }
 
-    public void die() {
-        this.died = true;
+    protected double getAge() {
+        return this.age;
     }
 
-    public abstract void live();
+    protected int getBirthday() {
+        return this.birthday;
+    }
+
+    protected int getGeneration() {
+        return this.generation;
+    }
+
+    protected boolean isMasculine() {
+        return this.masculine;
+    }
+
+    protected void die() {
+        interrupt();
+    }
+
+    protected abstract void born();
+
+    protected abstract void live();
+
+    protected abstract void died();
     
 }
